@@ -20,6 +20,7 @@
   --accent: #2446F5;
   --accent-soft: #EEF1FE;
   --accent-ink: #1A2E9E;
+  --promo: #FFB020;
   --on-ink: #FFFFFF;
   --on-ink-muted: #C9CED6;
   --ink-line: #2D333D;
@@ -108,6 +109,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .plan { border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 20px; position: relative; }
 .plan.featured { border: 2px solid var(--accent); }
 .badge { position: absolute; top: -14px; left: 32px; background: var(--accent); color: var(--on-ink); font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+.ribbon-wrap { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+.ribbon { position: absolute; top: 26px; right: -46px; width: 180px; transform: rotate(45deg); background: var(--promo); color: var(--ink); text-align: center; font-family: var(--display); font-size: 14px; font-weight: 700; letter-spacing: 0.04em; padding: 7px 0; box-shadow: 0 2px 6px rgba(14, 17, 22, 0.15); }
+.pill.promo { background: var(--promo); color: var(--ink); }
 .plan h3 { font-size: 22px; }
 .plan-sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
 .price { display: flex; flex-direction: column; }
@@ -261,9 +265,10 @@ details p { margin-top: 12px; color: var(--muted); }
   <div class="head">
     <p class="eyebrow">Planes</p>
     <h2 class="h2">Elige un punto de partida</h2>
-    <p class="muted">Pago único, sin mensualidad. Precios de referencia: cada proyecto se cotiza según lo que necesitas.</p>
+    <p class="muted">Pago único, sin mensualidad. Cotiza gratis y te enviamos el valor según lo que necesitas.</p>
   </div>
   <div class="pills">
+    <span class="pill promo">Lanzamiento: 30% de descuento en todos los planes</span>
     <span class="pill">50% al comenzar · 50% al publicar</span>
     <span class="pill">Plazos en días hábiles</span>
     <span class="pill">Certificado SSL incluido</span>
@@ -271,8 +276,9 @@ details p { margin-top: 12px; color: var(--muted); }
   </div>
   <div class="plans">
     <div class="plan">
+      <div class="ribbon-wrap" aria-hidden="true"><span class="ribbon">30% DCTO.</span></div>
       <div><h3>Básico</h3><p class="plan-sub">Para partir con presencia en internet.</p></div>
-      <p class="price"><small>Desde</small><strong>$180.000</strong></p>
+      <p class="price"><small>Valor</small><strong>A cotizar</strong></p>
       <ul>
         <li>Landing page de una sola página</li>
         <li>Diseño adaptado a celular</li>
@@ -284,9 +290,10 @@ details p { margin-top: 12px; color: var(--muted); }
       <a class="btn btn-outline" href="#contacto">Cotizar Básico</a>
     </div>
     <div class="plan featured">
+      <div class="ribbon-wrap" aria-hidden="true"><span class="ribbon">30% DCTO.</span></div>
       <span class="badge">Más elegido</span>
       <div><h3>Negocio</h3><p class="plan-sub">Para mostrar todo lo que ofreces.</p></div>
-      <p class="price"><small>Desde</small><strong>$380.000</strong></p>
+      <p class="price"><small>Valor</small><strong>A cotizar</strong></p>
       <ul>
         <li>Sitio de hasta 5 páginas</li>
         <li>Catálogo de hasta 30 productos o servicios</li>
@@ -300,8 +307,9 @@ details p { margin-top: 12px; color: var(--muted); }
       <a class="btn btn-primary" href="#contacto">Cotizar Negocio</a>
     </div>
     <div class="plan">
+      <div class="ribbon-wrap" aria-hidden="true"><span class="ribbon">30% DCTO.</span></div>
       <div><h3>Negocio Pro</h3><p class="plan-sub">Para administrar tu página tú mismo.</p></div>
-      <p class="price"><small>Desde</small><strong>$550.000</strong></p>
+      <p class="price"><small>Valor</small><strong>A cotizar</strong></p>
       <ul>
         <li>Todo lo del plan Negocio</li>
         <li>Panel autoadministrable: sube y cambia productos, precios, fotos y horarios cuando quieras</li>
@@ -382,17 +390,17 @@ details p { margin-top: 12px; color: var(--muted); }
     <h2>Conversemos sobre tu página</h2>
     <p class="on-ink-muted" style="max-width: 32em">Escríbeme y te respondo con una cotización sin compromiso.</p>
     <div class="row">
-      <a class="btn btn-primary" href="https://wa.me/569XXXXXXXX" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href="https://wa.me/56958404054" target="_blank" rel="noopener">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
-        WhatsApp +56 9 [NÚMERO]
+        WhatsApp +56 9 5840 4054
       </a>
       <a class="btn btn-light" href="mailto:contacto@webdi.cl">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         contacto@webdi.cl
       </a>
-      <a class="btn btn-light" href="https://instagram.com/" target="_blank" rel="noopener">
+      <a class="btn btn-light" href="https://instagram.com/webdi_cl" target="_blank" rel="noopener">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8"/></svg>
-        @[usuario]
+        @webdi_cl
       </a>
     </div>
   </div>
