@@ -21,6 +21,8 @@
   --accent-soft: #EEF1FE;
   --accent-ink: #1A2E9E;
   --promo: #FFB020;
+  --wa: #25D366;
+  --wa-hover: #1EBE5A;
   --on-ink: #FFFFFF;
   --on-ink-muted: #C9CED6;
   --ink-line: #2D333D;
@@ -53,6 +55,14 @@ p { margin: 0; }
 .btn-primary:hover { background: var(--accent-ink); color: var(--on-ink); }
 .btn-outline { border: 1.5px solid var(--ink); color: var(--ink); }
 .btn-outline:hover { background: var(--ink); color: var(--on-ink); }
+.btn-wa { background: var(--wa); color: var(--ink); }
+.btn-wa:hover { background: var(--wa-hover); color: var(--ink); }
+.btn-ig { background: linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF); color: #FFFFFF; }
+.btn-ig:hover { color: #FFFFFF; filter: brightness(1.08); }
+.wa-float { position: fixed; right: calc(20px + env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 30; width: 60px; height: 60px; border-radius: 50%; background: var(--wa); color: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14, 17, 22, 0.28); transition: transform .2s ease, box-shadow .2s ease; }
+.wa-float:hover { color: #FFFFFF; transform: scale(1.07); box-shadow: 0 8px 24px rgba(14, 17, 22, 0.34); }
+.wa-float:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .wa-float { transition: none; } .wa-float:hover { transform: none; } }
 .btn-light { border: 1.5px solid var(--on-ink); color: var(--on-ink); }
 .btn-light:hover { background: var(--on-ink); color: var(--ink); }
 
@@ -162,8 +172,31 @@ details p { margin-top: 12px; color: var(--muted); }
 .contact { padding-block: 96px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; }
 .contact h2 { font-weight: 700; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.1; max-width: 14em; }
 .contact .row { justify-content: center; margin-top: 8px; }
+.contact-row { align-items: center; }
+.icon-btn { width: 48px; height: 48px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform .15s ease, filter .15s ease; }
+.icon-btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+.icon-btn.small { width: 40px; height: 40px; }
+.icon-mail { background: var(--on-ink); color: var(--ink); }
+.icon-mail:hover { color: var(--ink); }
+.icon-ig { background: linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF); color: #FFFFFF; }
+.icon-ig:hover { color: #FFFFFF; }
+.icon-wa { background: var(--wa); color: var(--ink); }
+.icon-wa:hover { color: var(--ink); }
 .foot { border-top: 1px solid var(--ink-line); }
-.foot .wrap { padding-block: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #9CA3AF; }
+.foot-grid { padding-block: 56px 40px; display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.foot-col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.foot-col h3 { font-size: 16px; color: var(--on-ink); margin-bottom: 4px; }
+.foot-col a { color: var(--on-ink-muted); text-decoration: none; font-size: 15px; width: fit-content; }
+.foot-col a:hover { color: var(--on-ink); }
+.foot-col p { color: var(--on-ink-muted); font-size: 15px; max-width: 30em; }
+.foot-brand { gap: 16px; }
+.foot-logo { background: var(--on-ink); border-radius: 12px; padding: 10px 14px; width: fit-content; }
+.foot-col .foot-label { color: var(--on-ink); font-weight: 700; font-size: 14px; margin-top: 4px; }
+.foot-icons { display: flex; gap: 10px; margin-top: 8px; }
+.foot-icons a { width: 40px; }
+.foot-icons .icon-mail, .foot-icons .icon-wa, .foot-icons .icon-mail:hover, .foot-icons .icon-wa:hover { color: var(--ink); }
+.foot-icons .icon-ig, .foot-icons .icon-ig:hover { color: #FFFFFF; }
+.foot-bottom { border-top: 1px solid var(--ink-line); padding-block: 20px 100px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #9CA3AF; }
 </style>
 </head>
 <body>
@@ -287,7 +320,7 @@ details p { margin-top: 12px; color: var(--muted); }
       </ul>
       <p class="term"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Certificado SSL (candado de seguridad)</p>
       <p class="term"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Entrega en 3 a 5 días hábiles*</p>
-      <a class="btn btn-outline" href="#contacto">Cotizar Básico</a>
+      <a class="btn btn-outline" href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20el%20plan%20B%C3%A1sico." target="_blank" rel="noopener">Cotizar Básico</a>
     </div>
     <div class="plan featured">
       <div class="ribbon-wrap" aria-hidden="true"><span class="ribbon">30% DCTO.</span></div>
@@ -304,7 +337,7 @@ details p { margin-top: 12px; color: var(--muted); }
       </ul>
       <p class="term"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Certificado SSL (candado de seguridad)</p>
       <p class="term"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Entrega en 5 a 10 días hábiles*</p>
-      <a class="btn btn-primary" href="#contacto">Cotizar Negocio</a>
+      <a class="btn btn-primary" href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20el%20plan%20Negocio." target="_blank" rel="noopener">Cotizar Negocio</a>
     </div>
     <div class="plan">
       <div class="ribbon-wrap" aria-hidden="true"><span class="ribbon">30% DCTO.</span></div>
@@ -318,7 +351,7 @@ details p { margin-top: 12px; color: var(--muted); }
       </ul>
       <p class="term"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Certificado SSL (candado de seguridad)</p>
       <p class="term"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Entrega en 10 a 15 días hábiles*</p>
-      <a class="btn btn-outline" href="#contacto">Cotizar Negocio Pro</a>
+      <a class="btn btn-outline" href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20el%20plan%20Negocio%20Pro." target="_blank" rel="noopener">Cotizar Negocio Pro</a>
     </div>
   </div>
   <div class="custom">
@@ -326,7 +359,7 @@ details p { margin-top: 12px; color: var(--muted); }
       <h3>¿Necesitas algo distinto?</h3>
       <p>Pantallas publicitarias para tu local, más páginas o funciones especiales. Lo cotizamos a medida, con cronograma por etapas.</p>
     </div>
-    <a class="btn btn-outline" href="#contacto">Conversemos</a>
+    <a class="btn btn-outline" href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20un%20proyecto%20a%20medida." target="_blank" rel="noopener">Conversemos</a>
   </div>
   <p class="note">* Los plazos se cuentan desde que me entregas los textos y fotos. El precio final depende del tamaño del proyecto: más páginas, catálogos más grandes o funciones adicionales se cotizan aparte. Dominio, correo y equipos los contrata tu negocio directamente, y te asesoro en cada uno.</p>
 </section>
@@ -388,26 +421,47 @@ details p { margin-top: 12px; color: var(--muted); }
 <section id="contacto" class="band-ink">
   <div class="wrap contact">
     <h2>Conversemos sobre tu página</h2>
-    <p class="on-ink-muted" style="max-width: 32em">Escríbeme y te respondo con una cotización sin compromiso.</p>
-    <div class="row">
-      <a class="btn btn-primary" href="https://wa.me/56958404054" target="_blank" rel="noopener">
+    <p class="on-ink-muted" style="max-width: 32em">Escríbenos y te respondemos con una cotización sin compromiso.</p>
+    <div class="row contact-row">
+      <a class="btn btn-wa" href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web." target="_blank" rel="noopener">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
         WhatsApp +56 9 5840 4054
       </a>
-      <a class="btn btn-light" href="mailto:contacto@webdi.cl">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-        contacto@webdi.cl
-      </a>
-      <a class="btn btn-light" href="https://instagram.com/webdi_cl" target="_blank" rel="noopener">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8"/></svg>
-        @webdi_cl
-      </a>
+      <a class="icon-btn icon-mail" href="mailto:contacto@webdi.cl" aria-label="Escríbenos a contacto@webdi.cl"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+      <a class="icon-btn icon-ig" href="https://instagram.com/webdi_cl" target="_blank" rel="noopener" aria-label="Instagram @webdi_cl"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8"/></svg></a>
     </div>
   </div>
-  <div class="foot">
-    <div class="wrap"><span>© 2026 Webdi · Desarrollo web en Chile</span><span>Hecho a mano, con código propio.</span></div>
-  </div>
+  <footer class="foot">
+    <div class="wrap foot-grid">
+      <div class="foot-col foot-brand">
+        <div class="foot-logo"><svg role="img" aria-label="webdi" style="height: 36px; width: auto; display: block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 96" width="384" height="96"><g transform="scale(0.1875)"><rect width="512" height="512" rx="112" fill="#2446F5"/><path d="M122 0 30 700H161L229 92H247L335 700H563L651 92H669L737 700H868L776 0H548L458 622H440L350 0Z" transform="translate(33.49 347.80) scale(0.27 -0.27)" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="40.0" stroke-linejoin="miter" stroke-miterlimit="10"/><path d="M270 -14Q211 -14 159.5 15.5Q108 45 77.0 102.0Q46 159 46 240V256Q46 337 77.0 394.0Q108 451 159.0 480.5Q210 510 270 510Q338 510 373.0 487.5Q408 465 424 439H442V700H568V0H444V60H426Q409 32 373.5 9.0Q338 -14 270 -14ZM308 96Q366 96 405.0 133.5Q444 171 444 243V253Q444 325 405.5 362.5Q367 400 308 400Q250 400 211.0 362.5Q172 325 172 253V243Q172 171 211.0 133.5Q250 96 308 96Z" transform="translate(268.45 347.80) scale(0.27 -0.27)" fill="#FFFFFF"/><rect x="455.8" y="142.6" width="20" height="221.4" rx="4" fill="#9DB0FF"/></g><g transform="translate(120 -4)"><path d="M110 0 40 496H165L209 85H227L291 496H493L557 85H575L619 496H744L674 0H465L401 411H383L319 0Z" transform="translate(0.00 76.16) scale(0.09142857142857143 -0.09142857142857143)" fill="#0E1116"/><path d="M296 -14Q222 -14 165.5 17.5Q109 49 77.5 106.5Q46 164 46 242V254Q46 332 77.0 389.5Q108 447 164.0 478.5Q220 510 294 510Q367 510 421.0 477.5Q475 445 505.0 387.5Q535 330 535 254V211H174Q176 160 212.0 128.0Q248 96 300 96Q353 96 378.0 119.0Q403 142 416 170L519 116Q505 90 478.5 59.5Q452 29 408.0 7.5Q364 -14 296 -14ZM175 305H407Q403 348 372.5 374.0Q342 400 293 400Q242 400 212.0 374.0Q182 348 175 305Z" transform="translate(70.18 76.16) scale(0.09142857142857143 -0.09142857142857143)" fill="#0E1116"/><path d="M368 -14Q301 -14 265.0 9.0Q229 32 212 60H194V0H70V700H196V439H214Q230 465 265.5 487.5Q301 510 368 510Q428 510 479.0 480.5Q530 451 561.0 394.0Q592 337 592 256V240Q592 159 561.0 102.0Q530 45 479.0 15.5Q428 -14 368 -14ZM330 96Q388 96 427.0 133.5Q466 171 466 243V253Q466 325 427.5 362.5Q389 400 330 400Q272 400 233.0 362.5Q194 325 194 253V243Q194 171 233.0 133.5Q272 96 330 96Z" transform="translate(121.43 76.16) scale(0.09142857142857143 -0.09142857142857143)" fill="#0E1116"/><path d="M270 -14Q211 -14 159.5 15.5Q108 45 77.0 102.0Q46 159 46 240V256Q46 337 77.0 394.0Q108 451 159.0 480.5Q210 510 270 510Q338 510 373.0 487.5Q408 465 424 439H442V700H568V0H444V60H426Q409 32 373.5 9.0Q338 -14 270 -14ZM308 96Q366 96 405.0 133.5Q444 171 444 243V253Q444 325 405.5 362.5Q367 400 308 400Q250 400 211.0 362.5Q172 325 172 253V243Q172 171 211.0 133.5Q250 96 308 96Z" transform="translate(178.27 76.16) scale(0.09142857142857143 -0.09142857142857143)" fill="#0E1116"/><path d="M70 0V496H196V0Z" transform="translate(235.10 76.16) scale(0.09142857142857143 -0.09142857142857143)" fill="#0E1116"/><circle cx="247.26" cy="17.65" r="10.00" fill="#2446F5"/><g fill="none" stroke="#FFFFFF" stroke-width="1.30"><ellipse cx="247.26" cy="17.65" rx="4.20" ry="8.80"/><line x1="238.26" y1="17.65" x2="256.26" y2="17.65"/><path d="M239.46 13.15 Q247.26 14.65 255.06 13.15 M239.46 22.14 Q247.26 23.64 255.06 22.14"/></g></g></svg></div>
+        <p>Páginas web a medida para negocios y emprendimientos en Chile.</p>
+      </div>
+      <nav class="foot-col" aria-label="Pie de página">
+        <h3>Navegación</h3>
+        <a href="#servicios">Servicios</a>
+        <a href="#planes">Planes</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#preguntas">Preguntas frecuentes</a>
+      </nav>
+      <div class="foot-col">
+        <h3>Contacto</h3>
+        <p class="foot-label">Correo</p>
+        <a href="mailto:contacto@webdi.cl">contacto@webdi.cl</a>
+        <p class="foot-label">WhatsApp</p>
+        <a href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web." target="_blank" rel="noopener">+56 9 5840 4054</a>
+        <div class="foot-icons">
+          <a class="icon-btn icon-mail small" href="mailto:contacto@webdi.cl" aria-label="Correo"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+          <a class="icon-btn icon-wa small" href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web." target="_blank" rel="noopener" aria-label="WhatsApp"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+          <a class="icon-btn icon-ig small" href="https://instagram.com/webdi_cl" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap foot-bottom"><span>© 2026 Webdi · Desarrollo web en Chile</span><span>Hecho a mano, con código propio.</span></div>
+  </footer>
 </section>
 </main>
+<a class="wa-float" href="https://wa.me/56958404054?text=Hola%20Webdi%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d="M16.04 3C8.86 3 3.04 8.8 3.04 15.96c0 2.29.6 4.52 1.74 6.49L3 29l6.73-1.76a13 13 0 0 0 6.3 1.6h.01c7.17 0 13-5.8 13-12.96C29.04 8.8 23.21 3 16.04 3Zm0 23.66h-.01a10.8 10.8 0 0 1-5.5-1.5l-.4-.24-4 1.04 1.07-3.88-.26-.4a10.7 10.7 0 0 1-1.65-5.72c0-5.95 4.85-10.79 10.81-10.79 5.96 0 10.8 4.84 10.8 10.79 0 5.95-4.85 10.7-10.86 10.7Zm5.93-8.07c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.16-.22.33-.84 1.06-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.92-1.81-2.25-.19-.32-.02-.5.14-.66.15-.14.33-.38.49-.57.16-.19.22-.32.33-.54.11-.22.05-.4-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.4-.3.33-1.14 1.12-1.14 2.72s1.17 3.15 1.33 3.37c.16.22 2.3 3.5 5.57 4.91.78.34 1.39.54 1.86.69.78.25 1.5.21 2.06.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.42.19-1.55-.08-.14-.3-.22-.62-.38Z"/></svg></a>
+
 </body>
 </html>
